@@ -1,38 +1,46 @@
-import React, { useEffect, useState }  from 'react'
+import React, { Component } from 'react'
 import GridComponent from './GridComponent'
 
-export default function Visualizer() {
+export default class Visualizer extends Component {
 
-    const [width, setWidth] = useState(global.innerWidth)
+    constructor(props) {
+        super(props)
+        this.state = { width: global.innerWidth }
+        this.handleResize = this.handleResize.bind(this)
+    }
 
-    const R = 20
-    let C
+    componentDidMount() {
+        window.addEventListener('resize', this.handleResize)
+    }
 
-    const handleResize = () => {
-        setWidth(global.innerWidth)
+    handleResize() {
+        let newWidth = global.innerWidth
+        this.setState({width: newWidth})
     }
-    
-    if (width < 350) {
-        C = 10
-    }
-    else if (350 <= width && width <= 750) {
-        C = 20
-    }
-    else {
-        C = 30
-    }
-    
-    useEffect(() => {
-        global.addEventListener('resize', handleResize, false)
-    }, [])
 
-    return (
-        <div className="flex flex-col">
+    render() {
+        
+        const R = 20
+        let { width } = this.state
+        let C
+
+        if (width < 450) {
+            C = 12
+        }
+        else if (450 < width && width < 1050) {
+            C = 20
+        }
+        else {
+            C = 30
+        }
+
+        return (
+            <div className="flex flex-col">
                 <GridComponent
                     cols={C}
                     rows={R}
                 />
         </div>
-    )
+        )
+    }
 }
-
