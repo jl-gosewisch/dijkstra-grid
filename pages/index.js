@@ -8,7 +8,6 @@ export default function Home() {
     <>
       <Head>
         <title>Dijkstra Grid</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className="min-h-screen">
