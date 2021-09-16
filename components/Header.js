@@ -10,7 +10,7 @@ export default function Header() {
             animate={{ x: [-1800, 0], opacity: [0, 1] }}
             transition={{ duration: [3] }}
             >Hinweis: Dieses Hobbyprojekt wird kontinuierlich erweitert. Den aktuellen Code findest du auf&nbsp;
-            <Link href="/"><a className="hover:underline">Github</a></Link>.
+            <Link href="https://github.com/jl-gosewisch/dijkstra-grid"><a className="hover:underline">Github</a></Link>.
             </motion.p>
         </div>
     )
